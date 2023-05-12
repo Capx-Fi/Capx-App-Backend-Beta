@@ -1,0 +1,150 @@
+# openapi2-functions.yaml
+swagger: '2.0'
+info:
+  title: Capx
+  description: Capx Web App API
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+host: discord-auth-01trv7h8x4qc3.apigateway.capx-app.cloud.goog
+x-google-endpoints:
+- name: discord-auth-01trv7h8x4qc3.apigateway.capx-app.cloud.goog
+  allowCors: true
+paths:
+  /loginDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-signin
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/signin
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /loginAuthDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-signin-auth
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/signin-auth
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /signUpDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-signup
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/signup
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /linkDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-link
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/link
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /signUpAuthDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-signup-auth
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/signup-auth
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.

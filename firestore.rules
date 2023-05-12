@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+  // Function to validate if a user is authenticated.
+  function isAuthenticated() {
+  	return request.auth.uid != null;
+  }
+  
+  // Function to validate if a user belongs to registered users.
+  function isKnownUser() {
+  	return isAuthenticated() && exists(/databases/$(database)/documents/xusers/$(request.auth.uid));
+  }
+  
+  // Function to allow only the designated user to access the document.
+  function isOwnerOfDoc(userId) {
+  	return isKnownUser() && request.auth.uid == userId;
+  }
+  
+  // Function to allow read aggregate documents
+  function isAggregateDoc(org_id,quest_id) {
+  	return isKnownUser() && 'Aggregate' == get(/databases/$(database)/documents/xorgs/$(org_id)/quests/$(quest_id)).data.docType;
+  }
+  
+  // Function to allow only the order created user to read the document.
+  function isUserOrderCreator(quest_order_id) {
+  	return isKnownUser() && request.auth.uid == get(/databases/$(database)/documents/xquest_order/$(quest_order_id)).data.user_id;
+  }
+  
+  // Function to allow only the order created user to read the document.
+  function isUserOrderActionCreator(quest_order_id, action_order_id) {
+  	return isKnownUser() && request.auth.uid == get(/databases/$(database)/documents/xquest_order/$(quest_order_id)/action_order/$(action_order_id)).data.user_id;
+  }
+  
+  // Rules: For users collection
+  match /xusers/{userId} {
+  	allow read: if isOwnerOfDoc(userId);
+    
+    // Allowing any user to read public data of an user.
+    match /public/public {
+    	allow read: if isKnownUser();
+    }
+    
+    // Allowing only the doc owner to read private data.
+    match /invites/invites {
+    	allow read: if isOwnerOfDoc(userId);
+    }
+    
+    // Allowing only the doc owner to read private data. 
+    match /quest-order/{quest_order_id} {
+    	allow read: if isOwnerOfDoc(userId);
+    }
+  }
+  
+  // Rules: For Organisation collection.
+  match /xorgs/{org_id} {
+  	
+    // Only read public data corresponding to an organisation.
+    match /public/public {
+    	allow read: if isKnownUser();
+    }
+    
+    // Rules corresponding to a Quest
+    match /quests/{quest_id} {
+    	allow read: if isAggregateDoc(org_id,quest_id);
+      
+      // Only read public data corresponding to a quest.
+      match /public/public {
+      	allow read: if isKnownUser();
+      }
+      
+      // Rules corresponding to an Action
+      match /actions/{action_id} {
+      	
+        // Only read public data corresponding to an action.
+        match /public/public {
+        	allow read: if isKnownUser();
+        }
+      }
+    } 
+  }
+  
+  // Rules: For Quest-Order collection
+  match /xquest_order/{quest_order_id} {
+  	allow read: if isUserOrderCreator(quest_order_id);
+    
+    match /action_order/{action_order_id} {
+    	allow read: if isUserOrderActionCreator(quest_order_id, action_order_id);
+    }
+  }
+  }
+}

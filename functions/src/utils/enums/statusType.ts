@@ -1,0 +1,6 @@
+export enum StatusType {
+    CLAIMED = "CLAIMED",
+    COMPLETED = "COMPLETED",
+    IN_PROGRESS = "IN_PROGRESS",
+    REGISTERED = "REGISTERED"
+}

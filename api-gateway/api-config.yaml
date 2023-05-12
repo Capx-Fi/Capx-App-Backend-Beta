@@ -1,0 +1,444 @@
+# openapi2-functions.yaml
+swagger: '2.0'
+info:
+  title: Capx
+  description: Capx Web App API
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+host: capx-app-3h8v28mkcme9n.apigateway.capx-app.cloud.goog
+x-google-endpoints:
+- name: capx-app-3h8v28mkcme9n.apigateway.capx-app.cloud.goog
+  allowCors: true
+paths:
+  /completeAction:
+    post:
+      summary: Server Endpoint
+      operationId: completeAction
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/completeAction
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /checkIfUsernameAvailable:
+    get:
+      summary: Server Endpoint
+      operationId: checkIfUsernameAvailable
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/checkIfUsernameAvailable
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /checkInviteCode:
+    get:
+      summary: Server Endpoint
+      operationId: checkInviteCode
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/checkInviteCode
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /claimReward:
+    post:
+      summary: Server Endpoint
+      operationId: claimReward
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/claimReward
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /registerForQuest:
+    post:
+      summary: Server Endpoint
+      operationId: registerForQuest
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/registerForQuest
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /createUser:
+    post:
+      summary: Server Endpoint
+      operationId: createUser
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/createUser
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /updateUserProfile:
+    post:
+      summary: Server Endpoint
+      operationId: updateUser
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/updateProfile
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /linkYourTwitter:
+    post:
+      summary: Server Endpoint
+      operationId: linkTwitter
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/linkTwitter
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /linkYourGoogle:
+    post:
+      summary: Server Endpoint
+      operationId: linkGoogle
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/linkGoogle
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /fetchLeaderboard:
+    get:
+      summary: Server Endpoint
+      operationId: getLeaderboard
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/getLeaderboard
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /fetchWallet:
+    get:
+      summary: Server Endpoint
+      operationId: getWallet
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/getWallet
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /fetchRewardPool:
+    get:
+      summary: Server Endpoint
+      operationId: getRewardPool
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/getRewardPool
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /linkAuthDiscord:
+    get:
+      summary: Server Endpoint
+      operationId: discord-link-auth
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/discord/link-auth
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+  /inviteProgramStats:
+    get:
+      summary: Server Endpoint
+      operationId: inviteProgramStats
+      security:
+      - firebase: []
+      x-google-backend:
+        address: https://us-central1-capx-app.cloudfunctions.net/v1/getInviteProgramStats
+        disable_auth: true
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+        '401':
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Invalid Request.
+        '500':
+          description: Internal error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Internal Server Error.
+securityDefinitions:
+  firebase:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    # Replace YOUR-PROJECT-ID with your project ID
+    x-google-issuer: "https://securetoken.google.com/capx-app"
+    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+    x-google-audiences: "capx-app"
